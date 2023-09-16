@@ -1,0 +1,16 @@
+                                                          Planning and Design
+    1. The Smart Contract for a Decentralised Auction like an ebay alternative
+
+    2. The auction has an owner(the person who sells the goods or services) , a start and an end date
+
+    3. The owner can cancel the auction if there is an emergency or can finalize the auction after its end time
+
+    4. People will be able to send ETH by calling a function placeBid(). The senders address and the value sent to the auction will be
+       stored into a mapping called bids
+    
+    5. The users are incentivized to bid the maximum they are willing to pay, but are not bound to pay that full amount, but rather to the
+       previous highest bid plus an increment. The contract will automatically bid upto a given amount
+
+    6. The highestBindingBid is the selling price and the highestBidder the person who won the auction
+
+    7. After the auction ends the owner gets the highestBindingBid and everybody else withdraws their own amount
