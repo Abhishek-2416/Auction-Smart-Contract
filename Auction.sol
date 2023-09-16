@@ -1,6 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.19;
 
+contract AuctionCreator{
+    Auction[] public auctions;
+
+    function createAuction() public{
+        Auction newAuction = new Auction(msg.sender);
+        auctions.push(newAuction);
+    }
+}
+
 contract Auction{
     address payable public owner;
 
@@ -23,8 +32,8 @@ contract Auction{
     mapping(address => uint256) public bids;
     uint bidIncrement;
 
-    constructor(){
-        owner = payable(msg.sender);
+    constructor(address eoa){
+        owner = payable(eoa);
         auctionState = State.Running;
         //Now here to intialise the start and the end block we are going to use the block number rather than using the blocktimestamp because that can be manipulated
         startBlock = block.number; //This is for making the auction start rightaway we can set it for a time later also
